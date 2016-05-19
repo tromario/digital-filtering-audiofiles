@@ -5,14 +5,25 @@ import ru.teslenko.audio.header.IAudioHeader;
 
 public class Audio implements IAudio {
 
+    private IAudioHeader audioHeader;
+    private IAudioData audioData;
+
     @Override
     public IAudioHeader getAudioHeader() {
-        return null;
+        return audioHeader;
+    }
+
+    public void setAudioHeader(IAudioHeader audioHeader) {
+        this.audioHeader = audioHeader;
     }
 
     @Override
     public IAudioData getAudioData() {
-        return null;
+        return audioData;
+    }
+
+    public void setAudioData(IAudioData audioData) {
+        this.audioData = audioData;
     }
 
 }
