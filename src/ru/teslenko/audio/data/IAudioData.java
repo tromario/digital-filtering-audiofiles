@@ -10,6 +10,6 @@ public interface IAudioData {
     public long getDataLength();
 
     /** Нормализованные сэмплы аудиофайла */
-    public double[] getSamples();
+    public double[][] getSamples();
 
 }

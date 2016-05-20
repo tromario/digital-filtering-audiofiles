@@ -61,7 +61,7 @@ public class WaveReader extends Reader {
             e.printStackTrace();
         }
 
-        double[] samples = getSamples(data, this.sampleSize, this.framesCount, this.bitDepth, this.channelsCount);
+        double[][] samples = getSamples(data, this.sampleSize, this.framesCount, this.bitDepth, this.channelsCount);
 
         AudioData audioData = new AudioData();
         audioData.setDataLength(dataLength);

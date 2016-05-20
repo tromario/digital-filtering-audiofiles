@@ -4,18 +4,30 @@ import ru.teslenko.audio.reader.util.BitConverter;
 
 public abstract class Reader implements IReader {
 
-    protected double[] getSamples(byte[] data, int sampleSize, long framesCount, int bitDepth, int channelsCount) {
-        long samplesCount = framesCount * channelsCount;
-        double[] samples = new double[(int)samplesCount];
+    protected double[][] getSamples(byte[] data, int sampleSize, long framesCount, int bitDepth, int channelsCount) {
+        double[][] samples = new double[channelsCount][(int)framesCount];
 
+        // индекс канала
+        int channelIndex = 0;
+        // индекс сэмпла в канале
+        int sampleIndexInChannel = 0;
+
+        long samplesCount = framesCount * channelsCount;
         for (int sampleNumber = 0; sampleNumber < samplesCount; sampleNumber++) {
+            // байты одного сэмпла
             byte[] sampleBytes = new byte[sampleSize];
 
             for(int i = 0; i < sampleSize; i++){
                 sampleBytes[i] = data[sampleNumber * sampleSize + i];
             }
 
-            samples[sampleNumber] = getSample(sampleBytes, bitDepth);
+            // для моно канала считывание происходит последовательно
+            // для стерео канала считывание происходит поэтапно: левый канал - правый канал
+            samples[channelIndex++][sampleIndexInChannel] = getSample(sampleBytes, bitDepth);
+            if (channelIndex == channelsCount) {
+                channelIndex = 0;
+                sampleIndexInChannel++;
+            }
         }
 
         return samples;

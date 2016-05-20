@@ -4,7 +4,7 @@ public class AudioData implements IAudioData {
 
     private byte[] data;
     private long dataLength;
-    private double[] samples;
+    private double[][] samples;
 
     @Override
     public byte[] getData() {
@@ -25,11 +25,11 @@ public class AudioData implements IAudioData {
     }
 
     @Override
-    public double[] getSamples() {
+    public double[][] getSamples() {
         return samples;
     }
 
-    public void setSamples(double[] samples) {
+    public void setSamples(double[][] samples) {
         this.samples = samples;
     }
 
