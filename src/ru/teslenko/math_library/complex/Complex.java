@@ -1,4 +1,4 @@
-package ru.teslenko.math_library.transform;
+package ru.teslenko.math_library.complex;
 
 /** Комплексное число */
 // сделать видимость в пределах пакета
@@ -71,6 +71,16 @@ public class Complex {
         double imaginary = a.real * b.imaginary + a.imaginary * b.real;
 
         return new Complex(real, imaginary);
+    }
+
+    public static Complex[] parseComplex(double[] data) {
+        Complex[] complexData = new Complex[data.length];
+
+        for (int i = 0; i < data.length; i++) {
+            complexData[i] = new Complex(data[i], 0);
+        }
+
+        return complexData;
     }
 
 }
