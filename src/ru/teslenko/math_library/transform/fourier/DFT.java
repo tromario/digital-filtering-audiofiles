@@ -1,6 +1,7 @@
-package ru.teslenko.math_library.transform;
+package ru.teslenko.math_library.transform.fourier;
 
 import ru.teslenko.math_library.complex.Complex;
+import ru.teslenko.math_library.transform.ITransform;
 
 /** Дискретное преобразование Фурье */
 public class DFT implements ITransform {

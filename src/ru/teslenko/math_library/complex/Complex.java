@@ -1,5 +1,7 @@
 package ru.teslenko.math_library.complex;
 
+import java.util.List;
+
 /** Комплексное число */
 // сделать видимость в пределах пакета
 public class Complex {
@@ -73,6 +75,11 @@ public class Complex {
         return new Complex(real, imaginary);
     }
 
+    /** Модуль комплексного числа */
+    public double abs() {
+        return Math.sqrt(real * real + imaginary * imaginary);
+    }
+
     public static Complex[] parseComplex(double[] data) {
         Complex[] complexData = new Complex[data.length];
 
@@ -81,6 +88,21 @@ public class Complex {
         }
 
         return complexData;
+    }
+
+    public static Complex[][] parseComplex(List<List<Complex>> data) {
+        int rows = data.size();
+        int columns = data.get(0).size();
+
+        Complex[][] newData = new Complex[rows][columns];
+
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                newData[row][column] = data.get(row).get(column);
+            }
+        }
+
+        return newData;
     }
 
 }
