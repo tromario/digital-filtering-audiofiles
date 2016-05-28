@@ -49,7 +49,7 @@ public class STFT {
             spectrumDensityPower.add(tempSpectrum);
         }
 
-        return MatrixOperations.transposition(Complex.parseComplex(spectrumDensityPower));
+        return new MatrixOperations().transposition(Complex.parseComplex(spectrumDensityPower));
     }
 
     public int getDefaultLengthTransform() {
